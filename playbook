@@ -1,0 +1,48 @@
+1) lauch 2 instance which in ubuntu put the same keys to this incetances
+
+2) install ansible in this one incetance you consider  1 incetace is master or 2nd is custmars
+
+3) coppy your key which instance you installed ansible usin 
+scp -i vaibhav.key.pem.pem vaibhav.key.pem.pem ubuntu@ip:/home/ubuntu
+crate one direcoty and move this file in this directory
+
+4) go to vim /etc/ansible/hosts  === [this is  the configration file]
+# Ex 2: A collection of hosts belonging to the 'webservers' group:
+
+[servers]
+server_1  ansible_host=44.201.198.108
+
+[servers:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/home/ubuntu/keys/vaibhav.key.pem.pem
+## [webservers]
+Edit above information into hosts file
+
+3) apply below command for cheking our ansible able to take acess or not
+
+ansible servers -m ping
+
+4)  ansible servers -a "free -h" =this command for check the free version
+
+5) ansible servers -a "sudo apt update" === to update your servers incestance
+
+6)  ansible-inventory --list == to show information about your hosts file
+
+7) how to write playbook in ansible
+
+create one file and put there this contain
+
+-
+  name: Dates Playbook
+  hosts: servers
+  tasks:
+    - name: Show date
+      command: date
+
+    - name: show date again
+      command: date
+
+8) how to run ansible file 
+
+ansible-playbook date_play.yml
