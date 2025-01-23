@@ -1,0 +1,23 @@
+how to install nginx using plaaybook
+1) create a file and write down in this dierectory below contain
+
+
+-
+  name: Install Nginx and start it
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Install Nginx 
+      apt:
+        name: nginx
+        state: latest
+    - name: Start Nginx
+      service: 
+        name: nginx
+        state: started
+        enabled: yes
+
+
+  # and apply this file using play book command
+
+  ansible-playbook file name
