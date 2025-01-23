@@ -14,4 +14,4 @@ sudo apt update
 
 3) Following this update, you can install the Ansible software with:
 
-sudo apt install ansible
+sudo apt install ansible -y
